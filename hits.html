@@ -20,23 +20,20 @@
     </style>
 </head>
 <body>
-    <h1>hits</h1>
+    <h1>total hits:/h1>
     <div id="gallery"></div>
-
     <script>
-        // Use the Fetch API to retrieve all images from the /assets directory
-        fetch('assets')
-            .then(response => response.json())
-            .then(files => {
-                const gallery = document.getElementById('gallery');
-                files.forEach(file => {
-                    const imgElement = document.createElement('img');
-                    imgElement.src = '/assets' + file;
-                    imgElement.alt = file;
-                    gallery.appendChild(imgElement);
-                });
-            })
-            .catch(error => console.error('Error loading images:', error));
+        const images = [
+            'image1.jpg',
+            'image1.jpg'
+        ];
+        const gallery = document.getElementById('gallery');
+        images.forEach(image => {
+            const imgElement = document.createElement('img');
+            imgElement.src = 'https://eqate.github.io/assets/' + image; 
+            imgElement.alt = image;
+            gallery.appendChild(imgElement);
+        });
     </script>
 </body>
 </html>

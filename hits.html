@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hits</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        img {
+            width: 300px;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>hits</h1>
+    <div id="gallery"></div>
+
+    <script>
+        // Use the Fetch API to retrieve all images from the /assets directory
+        fetch('assets')
+            .then(response => response.json())
+            .then(files => {
+                const gallery = document.getElementById('gallery');
+                files.forEach(file => {
+                    const imgElement = document.createElement('img');
+                    imgElement.src = '/assets' + file;
+                    imgElement.alt = file;
+                    gallery.appendChild(imgElement);
+                });
+            })
+            .catch(error => console.error('Error loading images:', error));
+    </script>
+</body>
+</html>

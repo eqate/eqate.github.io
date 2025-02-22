@@ -1,4 +1,4 @@
-if game.GameId == 873703865 then
+if game.GameId == 7030416430 then
     loadstring(game:HttpGet("https://eqate.github.io/slipperstairs.lua", true))()
 elseif game.GameId == 65241 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/SkyGodCheesey/Galaxy-Hub/main/NDS.lua", true))()

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOL</title>
+    <style>body{font-family:Arial,sans-serif;text-align:center;margin:50px}input,button{padding:10px;margin:10px;font-size:16px}</style>
+</head>
+<body>
+    <h2>meme found by kya</h2>
+    <input type="text" id="username" placeholder="Enter username">
+    <button onclick="sendResetRequest()">hack!!1</button>
+    <p id="response"></p>
+    <script>
+        function sendResetRequest(){const e=document.getElementById("username").value;if(!e)return void alert("Please enter a username.");fetch("https://evades.io/api/account/send_password_reset_email",{method:"POST",headers:{"accept":"*/*","content-type":"application/json"},body:JSON.stringify({username:e})}).then(e=>e.text()).then(e=>{document.getElementById("response").innerText=e}).catch(e=>{console.error("Error:",e),document.getElementById("response").innerText="An error occurred."})}
+    </script>
+</body>
+</html>

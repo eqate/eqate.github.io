@@ -18,13 +18,12 @@
     </style>
 </head>
 <body>
-    <h2>meme found by kya</h2>
+    <h2>go to https://cors-anywhere.herokuapp.com/corsdemo if it says see /corsdemo</h2>
     <input type="text" id="username" placeholder="their username">
     <button onclick="sendResetRequest()">hack!!1</button>
     <p id="response"></p>
 
     <script>
-        alert('enable cors | https://cors-anywhere.herokuapp.com/corsdemo')
         function sendResetRequest() {
             const username = document.getElementById("username").value;
             if (!username) {

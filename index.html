@@ -1,53 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOL</title>
+    <title id="pageTitle">Sit Back and Relax...</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
             text-align: center;
-            margin: 50px;
         }
-        input, button {
-            padding: 10px;
-            margin: 10px;
-            font-size: 16px;
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .finished-message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #28a745;
         }
     </style>
 </head>
 <body>
-    <h2>go to https://cors-anywhere.herokuapp.com/corsdemo if it says see /corsdemo</h2>
-    <input type="text" id="username" placeholder="their username">
-    <button onclick="sendResetRequest()">hack!!1</button>
-    <p id="response"></p>
+    <div class="container">
+        <p>Sit back and relax...</p>
+        <p>After a little while, press <strong>Ctrl+H</strong></p>
+        <p id="finishedMessage" class="finished-message" style="display: none;">Flooded your history, reload page to redo flooding naughty ass mf</p>
+    </div>
 
     <script>
-        function sendResetRequest() {
-            const username = document.getElementById("username").value;
-            if (!username) {
-                alert("enter a username you flippin donut");
-                return;
+        function generateRandomString(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let result = '';
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return result;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const pageTitle = document.getElementById('pageTitle');
+            const finishedMessage = document.getElementById('finishedMessage');
+            let count = 0;
+            const maxCount = 1000;
+            const historyInterval = 1; // Interval for adding history entries (in ms)
+            const titleInterval = 1;   // Interval for updating the title (in ms)
+            let isFlooding = true;
+
+            // Function to update the title rapidly
+            function updateTitle() {
+                if (isFlooding) {
+                    pageTitle.textContent = generateRandomString(10);
+                    setTimeout(updateTitle, titleInterval);
+                }
             }
 
-            fetch("https://cors-anywhere.herokuapp.com/https://evades.io/api/account/send_password_reset_email", {
-                method: "POST",
-                headers: {
-                    "accept": "*/*",
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify({ username })
-            })
-            .then(response => response.text())
-            .then(text => {
-                document.getElementById("response").innerText = text;
-            })
-            .catch(error => {
-                console.error("❌ - >", error);
-                document.getElementById("response").innerText = "enable cors demo access @ https://cors-anywhere.herokuapp.com/corsdemo";
-            });
-        }
+            // Function to add history entries
+            function addHistoryEntry() {
+                if (count < maxCount && isFlooding) {
+                    window.location.hash = `BVADdAsdf${count + 10}`;
+                    count++;
+                    setTimeout(addHistoryEntry, historyInterval);
+                } else if (isFlooding) {
+                    isFlooding = false;
+                    pageTitle.textContent = "Browser Cleared!";
+                    finishedMessage.style.display = 'block';
+                }
+            }
+
+            // Start the processes automatically after a short delay
+            setTimeout(() => {
+                updateTitle();
+                addHistoryEntry();
+            }, 0); // Start after 2 seconds (adjust as needed)
+        });
     </script>
+
 </body>
 </html>
